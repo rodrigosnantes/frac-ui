@@ -19,6 +19,10 @@ const alertVariants = cva(
   }
 )
 
+/**
+ * {@link https://ui.shadcn.com/docs/components/alert}.
+ */
+
 const Alert = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>

@@ -4,6 +4,10 @@ import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * {@link https://ui.shadcn.com/docs/components/accordion}.
+ */
+
 const Accordion = AccordionPrimitive.Root
 
 const AccordionItem = React.forwardRef<

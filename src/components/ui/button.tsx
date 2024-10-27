@@ -33,6 +33,11 @@ const buttonVariants = cva(
   }
 )
 
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/button}.
+ */
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -53,4 +58,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-export { Button, buttonVariants }
+export { Button }
