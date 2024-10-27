@@ -1,10 +1,18 @@
-import './App.css'
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
 
-import { Button } from './ui/Button'
 
 export default function App() {
 
   return (
-    <Button label='Click' onClick={() => console.log('aqui')} />
+    <Alert variant="primary">
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>
+        Your session has expired. Please log in again.
+      </AlertDescription>
+    </Alert>
   )
 }
