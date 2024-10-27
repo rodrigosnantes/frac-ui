@@ -29,7 +29,7 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+  VariantProps<typeof badgeVariants> { }
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
@@ -37,4 +37,34 @@ function Badge({ className, variant, ...props }: BadgeProps) {
   )
 }
 
-export { Badge }
+function BadgeSuccess({ className, variant, ...props }: BadgeProps) {
+  const color = 'bg-success';
+  return (
+    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
+  )
+}
+
+function BadgeInfo({ className, variant, ...props }: BadgeProps) {
+  const color = 'bg-info';
+
+  return (
+    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
+  )
+}
+
+function BadgeWarning({ className, variant, ...props }: BadgeProps) {
+  const color = 'bg-warning';
+
+  return (
+    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
+  )
+}
+
+function BadgeError({ className, variant, ...props }: BadgeProps) {
+  const color = 'bg-error';
+  return (
+    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
+  )
+}
+
+export { Badge, BadgeSuccess, BadgeInfo, BadgeWarning, BadgeError }
