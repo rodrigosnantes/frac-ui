@@ -1,49 +1,38 @@
-import * as React from "react"
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
-import { Check } from "lucide-react"
+import * as React from 'react';
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { Check } from 'lucide-react';
+import { Label } from '@/components/ui/label';
 
-import { cn } from "@/lib/utils"
+import {
+  Controller,
+  FieldValues,
+  RegisterOptions,
+  Control,
+} from 'react-hook-form';
+
+import { cn } from '@/lib/utils';
 
 /**
  * {@link https://ui.shadcn.com/docs/components/checkbox}.
  */
 
-const Checkbox = React.forwardRef<
+const CheckboxModel = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <CheckboxPrimitive.Root
-    ref={ref}
-    className={cn(
-      "peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-      className
-    )}
-    {...props}
-  >
-    <CheckboxPrimitive.Indicator
-      className={cn("flex items-center justify-center text-current")}
-    >
-      <Check className="h-4 w-4" />
-    </CheckboxPrimitive.Indicator>
-  </CheckboxPrimitive.Root>
-))
-
-const FullCheckbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
-
+  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
+    label?: string;
+  }
+>(({ label, className, ...props }, ref) => (
   <div className="items-top flex space-x-2">
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        "peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+        'peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
         className
       )}
       {...props}
     >
       <CheckboxPrimitive.Indicator
-        className={cn("flex items-center justify-center text-current")}
+        className={cn('flex items-center justify-center text-current')}
       >
         <Check className="h-4 w-4" />
       </CheckboxPrimitive.Indicator>
@@ -54,11 +43,64 @@ const FullCheckbox = React.forwardRef<
         htmlFor="terms1"
         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
-        Accept terms and conditions
+        {label}
       </label>
     </div>
   </div>
+));
 
-))
+const Checkbox: React.FC<CheckboxProps> = ({
+  control,
+  name,
+  label,
+  rules,
+  className,
+  containerclass,
+}) => {
+  return (
+    <Controller
+      name={name}
+      rules={rules}
+      // rules={
+      //   {
+      //     // required: 'Nome de usuário é obrigatório',
+      //     // minLength: { value: 4, message: 'Mínimo de 4 caracteres' },
+      //     // maxLength: { value: 20, message: 'Máximo de 20 caracteres' },
+      //     // pattern: {
+      //     //   value: /^[a-zA-Z0-9_]+$/,
+      //     //   message: 'Apenas letras, números e underscores são permitidos',
+      //     // },
+      //     // validate: (value) => value !== 'admin' || 'Este nome de usuário não é permitido',
+      //   }
+      // }
+      control={control}
+      render={({ field, fieldState: { error } }) => {
+        return (
+          <div className={containerclass}>
+            <CheckboxModel
+              className={className}
+              {...field}
+              label={label}
+              checked={field.value}
+              onCheckedChange={(checked) => field.onChange(checked)}
+            />
+            {error && (
+              <Label className="text-error text-xs">{error.message}</Label>
+            )}
+          </div>
+        );
+      }}
+    />
+  );
+};
 
-export { Checkbox, FullCheckbox }
+export { Checkbox, CheckboxModel };
+
+interface CheckboxProps {
+  control: Control<FieldValues>; // O tipo do 'control' vindo do React Hook Form
+  name: string; // O nome do campo, como string
+  label?: string; // Label opcional para o checkbox
+  rules?: RegisterOptions; // As opções de validação para o campo
+  className?: string; // Opções de estilização para o input
+  containerclass?: string; // Opções de estilização para o container do input
+}
