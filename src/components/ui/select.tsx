@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
  * {@link https://ui.shadcn.com/docs/components/select}.
  */
 
-const Select = SelectPrimitive.Root
+const SelectModel = SelectPrimitive.Root
 
 const SelectGroup = SelectPrimitive.Group
 
@@ -149,7 +149,7 @@ const SelectSeparator = React.forwardRef<
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName
 
 export {
-  Select,
+  SelectModel,
   SelectGroup,
   SelectValue,
   SelectTrigger,

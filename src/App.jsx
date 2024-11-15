@@ -1,45 +1,37 @@
-import { Checkbox } from '@/components/ui/checkbox';
+import { Popover } from '@/components/ui/popover';
+import { Input, InputTypes } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+
 import { useForm } from 'react-hook-form';
 
 export default function App() {
-  const {
-    register,
-    control,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, control } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
-    <div className="flex justify-center mt-10">
-      <div className="w-96">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Checkbox
-            control={control}
-            name="Rodrigo"
-            label="dasdasd"
-            rules={{ required: 'Nome de usuário é obrigatório' }}
-            containerclass="mb-3"
-          />
-          <Checkbox
-            control={control}
-            name="Rodrigo"
-            label="dasdasd"
-            rules={{ required: 'Nome de usuário é obrigatório' }}
-            containerclass="mb-3"
-          />
-          <Checkbox
-            control={control}
-            name="Rodrigo"
-            label="dasdasd"
-            rules={{ required: 'Nome de usuário é obrigatório' }}
-            containerclass="mb-3"
-          />
+    <div className="w-full min-h-screen flex items-center justify-center">
+      <div>
+        <div>
+          <Popover
+            elementTrigger={<Button variant="outline">Open popover</Button>}
+          >
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div>
+                <Input
+                  type={InputTypes.text}
+                  placeholder="Email"
+                  name="Rodrigo"
+                  control={control}
+                />
+              </div>
 
-          <input type="submit" />
-        </form>
+              <button type="submit">Enviar</button>
+            </form>
+          </Popover>
+        </div>
       </div>
     </div>
   );
