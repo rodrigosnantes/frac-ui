@@ -46,10 +46,10 @@ const Input = React.forwardRef<
         return (
           <div>
             <InputModel
-              {...field} // valores e eventos do controller
-              {...props} // outras props
-              type={type || InputTypes.text}
+              {...field}
+              {...props}
               ref={ref}
+              type={type || InputTypes.text}
               className={className}
             />
             {error && (
