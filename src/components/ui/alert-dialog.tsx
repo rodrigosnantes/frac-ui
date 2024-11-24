@@ -100,74 +100,82 @@ const AlertDialogDescription = React.forwardRef<
 AlertDialogDescription.displayName =
   AlertDialogPrimitive.Description.displayName;
 
-const AlertDialogAction = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Action>,
-  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Action
-    ref={ref}
-    className={cn(buttonVariants(), className)}
-    {...props}
-  />
-));
-AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName;
-
-const AlertDialogCancel = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
-  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Cancel
-    ref={ref}
-    className={cn(
-      buttonVariants({ variant: 'outline' }),
-      'mt-2 sm:mt-0',
-      className
-    )}
-    {...props}
-  />
-));
-AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName;
-
 const AlertDialog = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
   AlertProps
 >(
-  (
-    {
-      className,
-      title,
-      subtitle,
-      elementTrigger,
-      cancelSettings,
-      confirmSettings,
+  ({
+    title,
+    subtitle,
+    elementTrigger,
+    cancelSettings = {
+      show: true,
+      callback: null,
     },
-    ref
-  ) => {
+    confirmSettings = {
+      show: true,
+      callback: null,
+    },
+    rootSettings,
+    elementTriggerSettings,
+    contentSettings,
+    headerSettings,
+    footerSettings,
+  }) => {
+    const [open, setOpen] = React.useState(rootSettings?.open || false);
+
     const handleCancel = React.useCallback(() => {
-      cancelSettings.callback?.();
+      cancelSettings?.callback?.();
+      if (cancelSettings?.skipPattern) return;
+      setOpen(false);
     }, [cancelSettings]);
 
     const handleConfirm = React.useCallback(() => {
-      confirmSettings.callback?.();
+      confirmSettings?.callback?.();
+      if (cancelSettings?.skipPattern) return;
+      setOpen(false);
     }, [confirmSettings]);
 
     return (
-      <AlertDialogModel>
-        <AlertDialogTrigger asChild>{elementTrigger}</AlertDialogTrigger>
+      <AlertDialogModel open={open}>
+        <AlertDialogTrigger
+          onClick={() => setOpen(true)}
+          className={elementTriggerSettings?.className}
+        >
+          {elementTrigger}
+        </AlertDialogTrigger>
 
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>{title}</AlertDialogTitle>
-            <AlertDialogDescription>{subtitle}</AlertDialogDescription>
+        <AlertDialogContent className={contentSettings?.className}>
+          <AlertDialogHeader className={headerSettings?.className}>
+            <AlertDialogTitle className={headerSettings?.titleClasses}>
+              {title}
+            </AlertDialogTitle>
+            <AlertDialogDescription className={headerSettings?.subTitleClasses}>
+              {subtitle}
+            </AlertDialogDescription>
           </AlertDialogHeader>
 
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={handleCancel}>
-              {cancelSettings.label || 'Cancel'}
-            </AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirm}>
-              {confirmSettings.label || 'Continue'}
-            </AlertDialogAction>
+          <AlertDialogFooter className={footerSettings?.className}>
+            {!cancelSettings?.show ? null : (
+              <Button
+                disabled={cancelSettings?.disabled}
+                variant="outline"
+                onClick={handleCancel}
+                className={cancelSettings?.className}
+              >
+                {cancelSettings?.label || 'Cancel'}
+              </Button>
+            )}
+
+            {!confirmSettings?.show ? null : (
+              <Button
+                disabled={confirmSettings?.disabled}
+                onClick={handleConfirm}
+                className={confirmSettings?.className}
+              >
+                {confirmSettings?.label || 'Continue'}
+              </Button>
+            )}
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialogModel>
@@ -176,18 +184,37 @@ const AlertDialog = React.forwardRef<
 );
 
 export type AlertProps = {
-  className?: string;
   title?: string;
   subtitle?: string;
   elementTrigger: any;
-  cancelSettings: settings;
-  confirmSettings: settings;
+  rootSettings?: rootProps;
+  elementTriggerSettings?: defaultProps;
+  contentSettings?: defaultProps;
+  headerSettings?: headerProps;
+  footerSettings?: defaultProps;
+  cancelSettings?: actionButtonProps;
+  confirmSettings?: actionButtonProps;
 };
 
-export type settings = {
+export type defaultProps = {
+  className?: string;
+};
+
+export type rootProps = defaultProps & {
+  open?: boolean;
+};
+export type headerProps = defaultProps & {
+  className?: string;
+  titleClasses: string;
+  subTitleClasses: string;
+};
+
+export type actionButtonProps = defaultProps & {
   label: string;
   callback?: any;
-  className?: string;
+  disabled?: boolean;
+  show?: boolean;
+  skipPattern?: boolean; // deve ignorar o comportamento padrão do dialogo
 };
 
 export {
@@ -201,6 +228,4 @@ export {
   AlertDialogFooter,
   AlertDialogTitle,
   AlertDialogDescription,
-  AlertDialogAction,
-  AlertDialogCancel,
 };

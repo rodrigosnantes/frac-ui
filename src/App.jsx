@@ -24,7 +24,7 @@ export default function App() {
       <AlertDialog
         title="Rodrigo"
         subtitle="Algo aqui"
-        elementTrigger={<Button variant="outline">tezte</Button>}
+        elementTrigger={<Button variant="outline">teste</Button>}
       />
     </>
   );
