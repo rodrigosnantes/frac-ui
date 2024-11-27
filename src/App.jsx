@@ -1,12 +1,13 @@
 // import { Select } from '@/components/ui/select';
 // import { Textarea } from '@/components/ui/textarea';
 // import { Tooltip } from '@/components/ui/tooltip';
-// import { AlertDialog } from '@/components/ui/alert-dialog';
 // import { useForm } from 'react-hook-form';
-// import { Button } from '@/components/ui/button';
 // import { Switch } from '@/components/ui/switch';
 
 export default function App() {
+
+  return null;
+  
   // const { handleSubmit, control, reset } = useForm({
   //   defaultValues: { switch: true },
   // });
@@ -18,16 +19,6 @@ export default function App() {
   // const onReset = () => {
   //   reset();
   // };
-
-  return null;
-
-  // return (
-  //   <AlertDialog
-  //     title="Rodrigo"
-  //     subtitle="Algo aqui"
-  //     elementTrigger={<Button variant="outline">teste</Button>}
-  //   />
-  // );
 
   // return (
   //   <div className="w-full min-h-screen flex items-center justify-center">

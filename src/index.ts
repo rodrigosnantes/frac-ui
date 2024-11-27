@@ -1,4 +1,11 @@
-export { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+export {
+  Alert,
+  AlertModel,
+  AlertTitle,
+  AlertDescription,
+} from '@/components/ui/alert';
+
+export { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 export {
   Accordion,
@@ -7,9 +14,22 @@ export {
   AccordionContent,
 } from '@/components/ui/accordion';
 
-export { Badge } from '@/components/ui/badge';
+export {
+  Badge,
+  BadgeSuccess,
+  BadgeInfo,
+  BadgeWarning,
+  BadgeError,
+} from '@/components/ui/badge';
 
-export { Button } from '@/components/ui/button';
+export {
+  Button,
+  ButtonSuccess,
+  ButtonInfo,
+  ButtonError,
+  ButtonWarning,
+  buttonVariants,
+} from '@/components/ui/button';
 
 export {
   Card,
@@ -20,7 +40,7 @@ export {
   CardContent,
 } from '@/components/ui/card';
 
-export { Checkbox } from '@/components/ui/checkbox';
+export { Checkbox, CheckboxModel } from '@/components/ui/checkbox';
 
 export {
   Dialog,
@@ -53,12 +73,18 @@ export {
   DropdownMenuRadioGroup,
 } from '@/components/ui/dropdown-menu';
 
-export { Input } from '@/components/ui/input';
+export { InputModel, Input, InputTypes } from '@/components/ui/input';
 
-export { Popover } from '@/components/ui/popover';
+export {
+  Popover,
+  PopoverModel,
+  PopoverTrigger,
+  PopoverContent,
+} from '@/components/ui/popover';
 
 export {
   Select,
+  SelectModel,
   SelectGroup,
   SelectValue,
   SelectTrigger,
@@ -72,15 +98,41 @@ export {
 
 export { Separator } from '@/components/ui/separator';
 
-export { Switch } from '@/components/ui/switch';
+export { Switch, SwitchModel } from '@/components/ui/switch';
 
 export { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
-export { Textarea } from '@/components/ui/textarea';
+export { Textarea, TextareaModel } from '@/components/ui/textarea';
 
 export {
   Tooltip,
+  TooltipModel,
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
 } from '@/components/ui/tooltip';
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
+
+export { Label } from '@/components/ui/label';
+
+export {
+  AlertDialog,
+  AlertDialogModel,
+  AlertDialogPortal,
+  AlertDialogOverlay,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+} from '@/components/ui/alert-dialog';

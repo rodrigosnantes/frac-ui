@@ -130,5 +130,5 @@ export {
   ButtonInfo,
   ButtonError,
   ButtonWarning,
-  buttonVariants,
+  buttonVariants
 };
