@@ -1,6 +1,6 @@
 {
   "name": "frac-ui",
-  "version": "1.4.4",
+  "version": "1.4.6",
   "main": "dist/frac-ui.umd.js",
   "module": "dist/frac-ui.es.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,11 @@
     "dist/styles.css"
   ],
   "exports": {
-    "./tailwind-config": "./src/tailwind-config.js"
+    ".": {
+      "import": "./dist/frac-ui.es.js",
+      "require": "./dist/frac-ui.umd.js"
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
