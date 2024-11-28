@@ -178,13 +178,26 @@ const AlertDialog: React.FC<AlertProps> = ({
   );
 };
 
+export {
+  AlertDialog,
+  AlertDialogModel,
+  AlertDialogPortal,
+  AlertDialogOverlay,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+};
+
 export type AlertProps = {
   title?: string;
   subtitle?: string;
   elementTrigger: React.ReactNode;
   rootSettings?: rootProps;
   elementTriggerSettings?: defaultProps;
-  contentSettings?: defaultProps; 
+  contentSettings?: defaultProps;
   headerSettings?: headerProps;
   footerSettings?: defaultProps;
   cancelSettings?: actionButtonProps;
@@ -210,17 +223,4 @@ export type actionButtonProps = defaultProps & {
   disabled?: boolean;
   show?: boolean;
   skipPattern?: boolean; // deve ignorar o comportamento padrão do dialogo
-};
-
-export {
-  AlertDialog,
-  AlertDialogModel,
-  AlertDialogPortal,
-  AlertDialogOverlay,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
 };

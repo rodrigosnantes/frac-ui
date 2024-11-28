@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
-import { ButtonError, Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 
 import { cn } from '@/lib/utils';
@@ -155,7 +155,7 @@ const Dialog: React.FC<DialogProps> = ({
         <DialogFooter>
           {footer?.customAction}
           {closeSetting?.show && (
-            <ButtonError
+            <Button
               type="submit"
               onClick={() => {
                 if (closeSetting?.callback) closeSetting?.callback();
@@ -163,7 +163,7 @@ const Dialog: React.FC<DialogProps> = ({
               }}
             >
               {closeSetting?.text}
-            </ButtonError>
+            </Button>
           )}
           {confirmSetting?.show && (
             <Button

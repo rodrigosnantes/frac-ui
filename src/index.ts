@@ -24,10 +24,6 @@ export {
 
 export {
   Button,
-  ButtonSuccess,
-  ButtonInfo,
-  ButtonError,
-  ButtonWarning,
   buttonVariants,
 } from '@/components/ui/button';
 

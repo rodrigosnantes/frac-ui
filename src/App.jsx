@@ -3,11 +3,26 @@
 // import { Tooltip } from '@/components/ui/tooltip';
 // import { useForm } from 'react-hook-form';
 // import { Switch } from '@/components/ui/switch';
+import { Button } from '@/components/ui/button';
 
 export default function App() {
+  return (
+    <div className=" w-96 gap-2 flex flex-col">
+      <Button variant="success" onClick={() => console.log('success')}>
+        success
+      </Button>
+      <Button variant="info" onClick={() => console.log('info')}>
+        info
+      </Button>
+      <Button variant="error" onClick={() => console.log('error')}>
+        error
+      </Button>
+      <Button variant="warning" onClick={() => console.log('warning')}>
+        warning
+      </Button>
+    </div>
+  );
 
-  return null;
-  
   // const { handleSubmit, control, reset } = useForm({
   //   defaultValues: { switch: true },
   // });
