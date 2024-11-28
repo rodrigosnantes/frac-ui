@@ -1,6 +1,6 @@
 {
   "name": "frac-ui",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "main": "dist/frac-ui.umd.js",
   "module": "dist/frac-ui.es.js",
   "types": "dist/index.d.ts",
@@ -12,14 +12,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run build:css",
+    "build": "vite build && npm run build:css && npm run build:types",
+    "build:types": "tsc --emitDeclarationOnly",
     "build:css": "npx tailwindcss -i ./src/index.css -o ./dist/index.css --minify",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "files": [
     "dist",
-    "dist/index.css"
+    "dist/index.css",
+    "dist/types"
   ],
   "exports": {
     ".": {

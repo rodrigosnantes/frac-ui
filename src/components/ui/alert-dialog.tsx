@@ -100,7 +100,7 @@ const AlertDialogDescription = React.forwardRef<
 AlertDialogDescription.displayName =
   AlertDialogPrimitive.Description.displayName;
 
-const AlertDialog: React.FC<AlertProps> = ({
+const AlertDialog: React.FC<AlertDialogProps> = ({
   title,
   subtitle,
   elementTrigger,
@@ -191,7 +191,7 @@ export {
   AlertDialogDescription,
 };
 
-export type AlertProps = {
+export type AlertDialogProps = {
   title?: string;
   subtitle?: string;
   elementTrigger: React.ReactNode;

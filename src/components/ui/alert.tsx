@@ -59,7 +59,7 @@ const AlertDescription = React.forwardRef<
   />
 ));
 
-const Alert: React.FC<any> = ({
+const Alert: React.FC<AlertProps> = ({
   modelSettings,
   titleSettings,
   descriptionSettings,
@@ -68,7 +68,7 @@ const Alert: React.FC<any> = ({
   return (
     <AlertModel
       className={modelSettings?.className}
-      variant={modelSettings?.variant}
+      variant={modelSettings?.variant || 'default'}
     >
       <AlertTitle className={titleSettings?.className}>
         {titleSettings.title}
@@ -90,3 +90,30 @@ const Alert: React.FC<any> = ({
 };
 
 export { Alert, AlertModel, AlertTitle, AlertDescription };
+
+export type ModelSettings = {
+  className?: string;
+  variant?: 'default' | 'success' | 'info' | 'error' | 'warning';
+};
+
+export type TitleSettings = {
+  className?: string;
+  title: string;
+};
+
+export type DescriptionSettings = {
+  className?: string;
+  description?: string;
+};
+
+export type ChildrenSettings = {
+  className?: string;
+  children?: React.ReactNode;
+};
+
+export type AlertProps = {
+  modelSettings?: ModelSettings;
+  titleSettings: TitleSettings;
+  descriptionSettings?: DescriptionSettings;
+  childrenSettings?: ChildrenSettings;
+};

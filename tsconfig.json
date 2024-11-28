@@ -9,8 +9,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "declarationDir": "./dist/types",
+    "declaration": true,               // Gera arquivos de declaração
+    "declarationDir": "./dist/types",  // Pasta para os tipos gerados
+    "emitDeclarationOnly": true,       // Apenas gera arquivos de tipo
     "outDir": "./dist",
     "paths": {
       "@/*": ["./src/*"],
@@ -18,7 +19,7 @@
       "@/lib/utils": ["./src/lib/utils"],
       "@/components/ui/*": ["./src/components/ui/*"],
       "@/lib/*": ["./src/lib/*"],
-      "@/hooks/*": ["./src/hooks/*"]
+      "@/hooks/*": ["./src/hooks/*"],
     }
   },
   "include": ["src"],

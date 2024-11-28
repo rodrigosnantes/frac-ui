@@ -1,10 +1,16 @@
-import path from "path"
+import path from "path";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  plugins: [react(), dts()],
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,       // Cria uma entrada de tipos no package.json
+      outputDir: 'dist/types',      // Gera os tipos em 'dist/types'
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -12,12 +18,12 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: 'src/index.ts',  // ponto de entrada da biblioteca
-      name: 'frac-ui', // nome da biblioteca para uso global
+      entry: 'src/index.ts',
+      name: 'frac-ui',
       fileName: (format) => `frac-ui.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'react-dom'], // evita duplicar dependências
+      external: ['react', 'react-dom'],
       output: {
         globals: {
           react: 'React',
@@ -28,4 +34,3 @@ export default defineConfig({
     cssCodeSplit: true,
   }
 });
-

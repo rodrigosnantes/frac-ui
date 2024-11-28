@@ -3,12 +3,17 @@
 // import { Tooltip } from '@/components/ui/tooltip';
 // import { useForm } from 'react-hook-form';
 // import { Switch } from '@/components/ui/switch';
+import { Alert } from '@/components/ui/alert';
 
 import './index.css';
 
 export default function App() {
-  return null;
-
+  return (
+    <Alert
+      titleSettings={{ title: 'sada' }}
+      modelSettings={{ variant: 'error' }}
+    />
+  );
   // const { handleSubmit, control, reset } = useForm({
   //   defaultValues: { switch: true },
   // });
