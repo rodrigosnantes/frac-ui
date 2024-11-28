@@ -4,6 +4,8 @@
 // import { useForm } from 'react-hook-form';
 // import { Switch } from '@/components/ui/switch';
 
+import './index.css';
+
 export default function App() {
   return null;
 

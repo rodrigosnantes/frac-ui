@@ -1,6 +1,6 @@
 {
   "name": "frac-ui",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "main": "dist/frac-ui.umd.js",
   "module": "dist/frac-ui.es.js",
   "types": "dist/index.d.ts",
@@ -12,21 +12,21 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:css": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+    "build:css": "npx tailwindcss -i ./src/index.css -o ./dist/index.css --minify",
     "build": "vite build && npm run build:css",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "files": [
     "dist",
-    "dist/styles.css"
+    "dist/index.css"
   ],
   "exports": {
     ".": {
       "import": "./dist/frac-ui.es.js",
       "require": "./dist/frac-ui.umd.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/index.css"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
