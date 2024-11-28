@@ -24,7 +24,8 @@ export default defineConfig({
           'react-dom': 'ReactDOM'
         }
       }
-    }
+    },
+    cssCodeSplit: true,
   }
 });
 
