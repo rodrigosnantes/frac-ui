@@ -1,1 +1,1 @@
-import 'frac-ui/dist/styles.css'; // Importa o CSS compilado da lib consumidora
+import 'frac-ui/dist/index.css'; // Importa o CSS compilado da lib consumidora

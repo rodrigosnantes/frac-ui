@@ -12,8 +12,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:css": "npx tailwindcss -i ./src/index.css -o ./dist/index.css --minify",
-    "build": "vite build && npm run build:css",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -26,7 +25,7 @@
       "import": "./dist/frac-ui.es.js",
       "require": "./dist/frac-ui.umd.js"
     },
-    "./styles.css": "./dist/index.css"
+    "./index.css": "./dist/index.css" 
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
