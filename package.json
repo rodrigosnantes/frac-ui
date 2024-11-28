@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:css": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css",
+    "build:css": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
     "build": "vite build && npm run build:css",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -21,6 +21,9 @@
     "dist",
     "dist/styles.css"
   ],
+  "exports": {
+    "./tailwind-config": "./src/tailwind-config.js"
+  },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
