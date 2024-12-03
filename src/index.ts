@@ -1,6 +1,5 @@
 import './index.css';
 
-export * from '@/components/ui/form';
 export * from '@/components/ui/alert';
 export * from '@/components/ui/avatar';
 export * from '@/components/ui/accordion';
@@ -21,3 +20,5 @@ export * from '@/components/ui/tooltip';
 export * from '@/components/ui/pagination';
 export * from '@/components/ui/label';
 export * from '@/components/ui/alert-dialog';
+
+export * from '@/components/ui/form';
