@@ -61,26 +61,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
     <Controller
       name={name}
       rules={rules}
-      // rules={
-      //   {
-      //     // required: 'Nome de usuário é obrigatório',
-      //     // minLength: { value: 4, message: 'Mínimo de 4 caracteres' },
-      //     // maxLength: { value: 20, message: 'Máximo de 20 caracteres' },
-      //     // pattern: {
-      //     //   value: /^[a-zA-Z0-9_]+$/,
-      //     //   message: 'Apenas letras, números e underscores são permitidos',
-      //     // },
-      //     // validate: (value) => value !== 'admin' || 'Este nome de usuário não é permitido',
-      //   }
-      // }
       control={control}
       render={({ field, fieldState: { error } }) => {
         return (
           <div className={containerclass}>
             <CheckboxModel
-              className={className}
               {...field}
               label={label}
+              className={className}
               checked={field.value}
               onCheckedChange={(checked) => field.onChange(checked)}
             />
@@ -97,7 +85,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 export { Checkbox, CheckboxModel };
 
 interface CheckboxProps {
-  control: Control<FieldValues>; // O tipo do 'control' vindo do React Hook Form
+  control?: Control<FieldValues>; // O tipo do 'control' vindo do React Hook Form
   name: string; // O nome do campo, como string
   label?: string; // Label opcional para o checkbox
   rules?: RegisterOptions; // As opções de validação para o campo

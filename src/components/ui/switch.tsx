@@ -35,7 +35,7 @@ const Switch = React.forwardRef<
     name: string;
     label?: string;
     classContainer?: string;
-    control: any;
+    control?: any;
     rules?: RegisterOptions;
   }
 >(({ control, rules, className, classContainer, label, ...props }, ref) => {

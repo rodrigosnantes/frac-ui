@@ -1,5 +1,6 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 
 import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
 import { useCallback } from 'react';
@@ -66,6 +67,8 @@ function FormContent() {
             placeholder="Email"
             rules={{ required: 'Campo Obrigatório' }}
           />
+
+          <Checkbox name='gender' />
         </div>
 
         <div className="flex gap-4 flex-wrap mt-4">

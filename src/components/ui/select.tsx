@@ -208,7 +208,7 @@ export {
 };
 
 export type SelectInputProps = {
-  control: any;
+  control?: any;
   rules: RegisterOptions;
   name: string;
   label: string;
