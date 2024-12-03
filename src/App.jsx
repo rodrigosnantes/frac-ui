@@ -48,7 +48,7 @@ function FormContent() {
   return (
     <div className="w-full mt-9 flex justify-center">
       <div className="w-96">
-        <div className='gap-2 flex flex-col'>
+        <div className="gap-2 flex flex-col">
           <Input
             name="name"
             label="Nome"
@@ -60,23 +60,29 @@ function FormContent() {
             label="sobrenome"
             rules={{ required: 'Campo Obrigatório' }}
           />
+
+          <Input
+            name="email"
+            label="Email"
+            rules={{ required: 'Campo Obrigatório' }}
+          />
         </div>
 
         <div className="flex gap-4 flex-wrap mt-4">
+          <Button type="button" onClick={handleReset}>
+            Reset form
+          </Button>
+
           <Button type="button" onClick={setNameValue}>
             set name
           </Button>
 
           <Button type="button" onClick={showErrorsForm}>
-           get form Erros
+            get form Erros
           </Button>
 
           <Button type="button" onClick={ClearForm}>
             Clear form
-          </Button>
-
-          <Button type="button" onClick={handleReset}>
-            Reset form
           </Button>
 
           <Button type="button" onClick={checkFormContext}>
