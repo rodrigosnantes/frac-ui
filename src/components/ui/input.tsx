@@ -33,7 +33,7 @@ const Input = React.forwardRef<
   HTMLInputElement,
   InputProps & {
     name: string;
-    control: any;
+    control?: any;
     rules?: RegisterOptions;
   }
 >(({ className, control, type, rules, ...props }, ref) => {
@@ -44,7 +44,7 @@ const Input = React.forwardRef<
       rules={rules}
       render={({ field, fieldState: { error } }) => {
         return (
-          <div>
+          <React.Fragment>
             <InputModel
               {...field}
               {...props}
@@ -55,7 +55,7 @@ const Input = React.forwardRef<
             {error && (
               <Label className="text-error text-xs">{error.message}</Label>
             )}
-          </div>
+          </React.Fragment>
         );
       }}
     />

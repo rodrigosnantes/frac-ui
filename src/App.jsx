@@ -13,7 +13,7 @@ export default function App() {
     <Form
       validationMode="onChange"
       onSubmit={handleSubmit}
-      defaultValues={{ name: 'rodrigo', sobrenome: 'Nantes' }}
+      // defaultValues={{ name: 'rodrigo', sobrenome: 'Nantes' }}
     >
       <FormContent />
     </Form>
@@ -51,19 +51,19 @@ function FormContent() {
         <div className="gap-2 flex flex-col">
           <Input
             name="name"
-            label="Nome"
+            placeholder='Nome'
             rules={{ required: 'Campo Obrigatório' }}
           />
 
           <Input
             name="sobrenome"
-            label="sobrenome"
+            placeholder='sobrenome'
             rules={{ required: 'Campo Obrigatório' }}
           />
 
           <Input
             name="email"
-            label="Email"
+            placeholder="Email"
             rules={{ required: 'Campo Obrigatório' }}
           />
         </div>
