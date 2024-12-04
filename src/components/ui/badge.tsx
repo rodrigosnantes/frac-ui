@@ -12,13 +12,14 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+        default:"border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+        secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
+        error: 'bg-error',
+        success: 'bg-success',
+        info: 'bg-info',
+        warning: 'bg-warning',
       },
     },
     defaultVariants: {
@@ -37,34 +38,4 @@ function Badge({ className, variant, ...props }: BadgeProps) {
   )
 }
 
-function BadgeSuccess({ className, variant, ...props }: BadgeProps) {
-  const color = 'bg-success';
-  return (
-    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
-  )
-}
-
-function BadgeInfo({ className, variant, ...props }: BadgeProps) {
-  const color = 'bg-info';
-
-  return (
-    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
-  )
-}
-
-function BadgeWarning({ className, variant, ...props }: BadgeProps) {
-  const color = 'bg-warning';
-
-  return (
-    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
-  )
-}
-
-function BadgeError({ className, variant, ...props }: BadgeProps) {
-  const color = 'bg-error';
-  return (
-    <div className={cn(badgeVariants({ variant }), `${className} ${color}`)} {...props} />
-  )
-}
-
-export { Badge, BadgeSuccess, BadgeInfo, BadgeWarning, BadgeError }
+export { Badge }

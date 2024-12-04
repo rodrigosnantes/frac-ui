@@ -10,6 +10,7 @@ export default function App() {
     console.log('data', data);
   };
 
+
   return (
     <Form
       validationMode="onChange"
@@ -52,13 +53,13 @@ function FormContent() {
         <div className="gap-2 flex flex-col">
           <Input
             name="name"
-            placeholder='Nome'
+            placeholder="Nome"
             rules={{ required: 'Campo Obrigatório' }}
           />
 
           <Input
             name="sobrenome"
-            placeholder='sobrenome'
+            placeholder="sobrenome"
             rules={{ required: 'Campo Obrigatório' }}
           />
 
@@ -68,7 +69,7 @@ function FormContent() {
             rules={{ required: 'Campo Obrigatório' }}
           />
 
-          <Checkbox name='gender' />
+          <Checkbox name="gender" />
         </div>
 
         <div className="flex gap-4 flex-wrap mt-4">
