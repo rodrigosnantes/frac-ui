@@ -3,16 +3,6 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 import { cn } from '@/lib/utils';
 
-interface TooltipProps
-  extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> {
-  elementTrigger: React.ReactNode;
-  sideOffset?: number;
-  delayDuration?: number;
-  defaultOpen?: boolean; //
-  onOpenChange?: (open: boolean) => void;
-  elementContent: any;
-}
-
 /**
  * {@link https://ui.shadcn.com/docs/components/tooltip}.
  */
@@ -46,32 +36,52 @@ const Tooltip = React.forwardRef<
   (
     {
       className,
-      elementTrigger,
-      elementContent,
+      triggerSettings,
+      contentSettings,
       delayDuration = 100, // tempo em milissegundos que o tooltio irá aparecer após o hover o elementTrigger
       defaultOpen = false,
       onOpenChange = undefined, // função de callback que é executada no gatilho de exibição do elementTrigger
-      sideOffset = 4, // distancia que o tooltip irá aparecer com relação ao elementTrigger
       ...props
     },
     ref
   ) => (
     <TooltipProvider delayDuration={delayDuration}>
       <TooltipModel defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
-        <TooltipTrigger asChild>{elementTrigger}</TooltipTrigger>
+
+        <TooltipTrigger className={triggerSettings?.className} asChild>
+          {triggerSettings.children}
+        </TooltipTrigger>
+
         <TooltipContent
           ref={ref}
           {...props}
-          sideOffset={sideOffset}
-          className={className}
+          sideOffset={contentSettings?.sideOffset}
+          className={contentSettings?.className}
         >
-          {elementContent}
+          {contentSettings.children}
         </TooltipContent>
+        
       </TooltipModel>
     </TooltipProvider>
   )
 );
 Tooltip.displayName = TooltipPrimitive.Content.displayName;
+
+interface TooltipProps
+  extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> {
+  triggerSettings: {
+    children: React.ReactNode;
+    className?: string;
+  };
+  contentSettings: {
+    children: React.ReactNode;
+    className?: string;
+    sideOffset?: number; // distancia que o tooltip irá aparecer com relação ao elementTrigger
+  };
+  delayDuration?: number;
+  defaultOpen?: boolean; //
+  onOpenChange?: (open: boolean) => void;
+}
 
 export {
   Tooltip,

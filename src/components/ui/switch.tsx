@@ -55,7 +55,7 @@ const Switch = React.forwardRef<
                 onCheckedChange={field.onChange}
                 className={className}
               />
-              <Label htmlFor="airplane-mode">{label}</Label>
+              <Label>{label}</Label>
             </div>
             {error && (
               <Label className="text-error text-xs">{error.message}</Label>
