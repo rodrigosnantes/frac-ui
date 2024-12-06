@@ -48,19 +48,16 @@ const Tooltip = React.forwardRef<
       className,
       elementTrigger,
       elementContent,
-      delayDuration,
+      delayDuration = 100, // tempo em milissegundos que o tooltio irá aparecer após o hover o elementTrigger
       defaultOpen = false,
-      onOpenChange = null,
-      sideOffset = 4,
+      onOpenChange = undefined, // função de callback que é executada no gatilho de exibição do elementTrigger
+      sideOffset = 4, // distancia que o tooltip irá aparecer com relação ao elementTrigger
       ...props
     },
     ref
   ) => (
-    <TooltipProvider delayDuration={100}>
-      <TooltipModel
-        defaultOpen={defaultOpen}
-        onOpenChange={onOpenChange || undefined}
-      >
+    <TooltipProvider delayDuration={delayDuration}>
+      <TooltipModel defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
         <TooltipTrigger asChild>{elementTrigger}</TooltipTrigger>
         <TooltipContent
           ref={ref}

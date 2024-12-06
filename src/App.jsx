@@ -1,6 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Tooltip } from '@/components/ui/tooltip';
 
 import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
 import { useCallback } from 'react';
@@ -10,6 +11,15 @@ export default function App() {
     console.log('data', data);
   };
 
+  return (
+    <div className="h-screen w-full flex justify-center items-center">
+      <Tooltip
+        onOpenChange={() => console.log('object')}
+        elementTrigger={<Button>button</Button>}
+        elementContent={<span>Algo aqui dentro</span>}
+      />
+    </div>
+  );
 
   return (
     <Form
