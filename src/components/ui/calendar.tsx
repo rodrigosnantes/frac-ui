@@ -4,6 +4,9 @@ import { DayPicker } from 'react-day-picker';
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { Controller, RegisterOptions } from 'react-hook-form';
+
+import { Label } from '@/components/ui/label';
 
 /**
  * {@link https://ui.shadcn.com/docs/components/calendar}.
@@ -65,4 +68,36 @@ function Calendar({
 }
 Calendar.displayName = 'Calendar';
 
-export { Calendar };
+const FormCalendar: React.FC<FormCalendarProps> = ({ ...props }) => {
+  return (
+    <Controller
+      name={props.name}
+      control={props?.control}
+      rules={props?.rules}
+      render={({ field, fieldState: { error } }) => {
+        return (
+          <React.Fragment>
+            <Calendar
+              {...field} // Integra o calendário ao estado do formulário
+              selected={field.value} // Passa o valor atual para o calendário
+              onSelect={field.onChange} // Atualiza o valor ao selecionar uma data
+              className={props?.className}
+              {...props}
+            />
+            {error && (
+              <Label className="text-error text-xs">{error.message}</Label>
+            )}
+          </React.Fragment>
+        );
+      }}
+    />
+  );
+};
+
+interface FormCalendarProps {
+  rules?: object; 
+  className?: string; 
+  [key: string]: any; 
+}
+
+export { Calendar, FormCalendar };

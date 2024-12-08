@@ -1,25 +1,15 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Calendar } from '@/components/ui/calendar';
+import { FormCalendar } from '@/components/ui/calendar';
 
 import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 export default function App() {
-  const [date, setDate] = React.useState(new Date())
-  
   const handleSubmit = (data) => {
     console.log('data', data);
   };
-
-  return (
-    <Calendar
-      mode="range"
-      selected={date}
-      onSelect={setDate}
-    />
-  );
 
   return (
     <Form
@@ -80,6 +70,12 @@ function FormContent() {
           />
 
           <Checkbox name="gender" />
+
+          <FormCalendar
+            name="date"
+            rules={{ required: 'A data é obrigatória.' }}
+            className="my-custom-class"
+          />
         </div>
 
         <div className="flex gap-4 flex-wrap mt-4">
