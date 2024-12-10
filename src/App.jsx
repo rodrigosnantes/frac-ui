@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { FormCalendar } from '@/components/ui/calendar';
+import { InputCalendar } from '@/components/ui/calendar';
 
 import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
 import { useCallback } from 'react';
@@ -13,9 +13,9 @@ export default function App() {
 
   return (
     <Form
-      validationMode="onChange"
+      validationMode="all"
       onSubmit={handleSubmit}
-      // defaultValues={{ name: 'rodrigo', sobrenome: 'Nantes' }}
+      defaultValues={{ name: 'rodrigo', sobrenome: 'Nantes' }}
     >
       <FormContent />
     </Form>
@@ -71,11 +71,21 @@ function FormContent() {
 
           <Checkbox name="gender" />
 
-          <FormCalendar
+          <InputCalendar
+            name="date"
+            triggerSettings={{ placeholder: 'Data' }}
+            calendarSettings={{
+              mode: 'single',
+              name: 'date',
+              rules: { required: 'Campo Obrigatório' },
+            }}
+          />
+
+          {/* <FormCalendar
             name="date"
             rules={{ required: 'A data é obrigatória.' }}
             className="my-custom-class"
-          />
+          /> */}
         </div>
 
         <div className="flex gap-4 flex-wrap mt-4">

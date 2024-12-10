@@ -3,10 +3,18 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
 
 import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
-import { Controller, RegisterOptions } from 'react-hook-form';
+import { buttonVariants, Button } from '@/components/ui/button';
+import { Controller } from 'react-hook-form';
 
 import { Label } from '@/components/ui/label';
+import { CalendarIcon } from 'lucide-react';
+
+import {
+  PopoverModel,
+  PopoverTrigger,
+  PopoverContent,
+} from '@/components/ui/popover';
+import { useGlobalFormContext, useWatch } from './form';
 
 /**
  * {@link https://ui.shadcn.com/docs/components/calendar}.
@@ -94,10 +102,77 @@ const FormCalendar: React.FC<FormCalendarProps> = ({ ...props }) => {
   );
 };
 
-interface FormCalendarProps {
-  rules?: object; 
-  className?: string; 
-  [key: string]: any; 
+const InputCalendar: React.FC<InputCalendarProps> = ({
+  triggerSettings,
+  calendarSettings,
+}: {
+  triggerSettings: any;
+  calendarSettings: FormCalendarProps;
+}) => {
+  const fieldValue = useWatch({ name: calendarSettings.name });
+  const { getFieldErrors, register } = useGlobalFormContext();
+  const error = getFieldErrors()?.[calendarSettings.name]?.message;
+
+
+  return (
+    <React.Fragment>
+
+      <input
+        value={fieldValue}
+        {...register(calendarSettings.name, calendarSettings.rules)}
+        className="hidden"
+      />
+
+      <PopoverModel>
+        <PopoverTrigger>
+          <Button
+            type="button"
+            variant="outline"
+            className={cn(
+              'w-full font-normal px-3 py-2 hover:bg-slate-100',
+              !fieldValue && 'text-muted-foreground'
+            )}
+          >
+            {fieldValue ? (
+              fieldValue?.toLocaleDateString()
+            ) : (
+              <span>{triggerSettings?.placeholder}</span>
+            )}
+            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+
+        <PopoverContent
+          className="w-auto p-0"
+          align="start"
+        >
+          {/* <FormCalendar {...{ ...calendarSettings, rules: undefined }} /> */}
+          <FormCalendar {...calendarSettings} />
+        </PopoverContent>
+        
+      </PopoverModel>
+
+      {error && <Label className="text-error text-xs">{error}</Label>}
+    </React.Fragment>
+  );
+};
+
+interface InputCalendarProps {
+  triggerSettings: {
+    placeholder?: string;
+    className?: string;
+  };
+  calendarSettings: {
+    name: string;
+    rules?: object;
+    className?: string;
+  };
 }
 
-export { Calendar, FormCalendar };
+interface FormCalendarProps {
+  rules?: object;
+  className?: string;
+  [key: string]: any;
+}
+
+export { Calendar, FormCalendar, InputCalendar };

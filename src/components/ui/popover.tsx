@@ -11,6 +11,8 @@ const PopoverModel = PopoverPrimitive.Root;
 
 const PopoverTrigger = PopoverPrimitive.Trigger;
 
+const PopoverPortal = PopoverPrimitive.Portal;
+
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
@@ -46,4 +48,4 @@ type PopoverProps = {
   elementTrigger: React.ReactNode; // Elemento que dispara o popover
 };
 
-export { Popover, PopoverModel, PopoverTrigger, PopoverContent };
+export { Popover, PopoverModel, PopoverTrigger, PopoverContent, PopoverPortal };

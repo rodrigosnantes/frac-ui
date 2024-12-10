@@ -11,13 +11,6 @@ import {
   Path,
 } from 'react-hook-form';
 
-type FormProps<T extends FieldValues> = {
-  onSubmit: SubmitHandler<T>;
-  defaultValues?: DefaultValues<T>;
-  children: ReactNode;
-  validationMode: Mode;
-};
-
 const Form = <T extends FieldValues>({
   onSubmit,
   defaultValues,
@@ -33,21 +26,18 @@ const Form = <T extends FieldValues>({
     }, {} as Record<string, any>);
     methods.reset(emptyValues as T);
     methods.clearErrors();
-  }, [methods.reset, defaultValues]);  
+  }, [methods.reset, defaultValues]);
 
   const getFieldErrors = (): Record<string, any> => methods.formState.errors;
 
-  const extendedMethods: UseFormReturn<T> & {
-    clearForm: () => void;
-    getFieldErrors: () => Record<string, any>;
-  } = {
+  const extendedMethods = {
     ...methods,
     clearForm,
     getFieldErrors,
   };
 
   return (
-    <FormProvider {...extendedMethods}>
+    <FormProvider {...(extendedMethods as any)}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
     </FormProvider>
   );
@@ -58,7 +48,17 @@ const useGlobalFormContext = <T extends FieldValues>() => {
   if (!context) {
     throw new Error('useGlobalFormContext must be used within a FormProvider');
   }
-  return context;
+
+  const { getFieldErrors, clearForm } = context as typeof context & {
+    getFieldErrors: () => Record<string, any>;
+    clearForm: () => void;
+  };
+
+  return {
+    ...context,
+    getFieldErrors,
+    clearForm,
+  };
 };
 
 const useWatch = <T extends FieldValues>({ name }: { name: Path<T> }) => {
@@ -69,6 +69,13 @@ const useWatch = <T extends FieldValues>({ name }: { name: Path<T> }) => {
 const useFormState = <T extends FieldValues>() => {
   const { formState } = useFormContext<T>();
   return formState;
+};
+
+type FormProps<T extends FieldValues> = {
+  onSubmit: SubmitHandler<T>;
+  defaultValues?: DefaultValues<T>;
+  children: ReactNode;
+  validationMode: Mode;
 };
 
 export { Form, useGlobalFormContext, useWatch, useFormState };
