@@ -75,7 +75,7 @@ function FormContent() {
             name="date"
             triggerSettings={{ placeholder: 'Data' }}
             calendarSettings={{
-              mode: 'single',
+              mode: 'default',
               name: 'date',
               rules: { required: 'Campo Obrigatório' },
             }}

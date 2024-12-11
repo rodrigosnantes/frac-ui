@@ -18,6 +18,7 @@ import { useGlobalFormContext, useWatch } from './form';
 
 /**
  * {@link https://ui.shadcn.com/docs/components/calendar}.
+ * {@link https://daypicker.dev/}.
  */
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
@@ -110,21 +111,36 @@ const InputCalendar: React.FC<InputCalendarProps> = ({
   calendarSettings: FormCalendarProps;
 }) => {
   const fieldValue = useWatch({ name: calendarSettings.name });
-  const { getFieldErrors, register } = useGlobalFormContext();
+  const { getFieldErrors, register, setValue, clearErrors } = useGlobalFormContext();
   const error = getFieldErrors()?.[calendarSettings.name]?.message;
 
+  const handleSelect = (date: any) => {
+    setValue(calendarSettings.name, date);
+    clearErrors(calendarSettings.name);
+  };
+
+  const previewDate = React.useMemo(() => {
+    if (!fieldValue) return <span>{triggerSettings?.placeholder}</span>;
+    if (fieldValue?.length) {
+      const [first] = fieldValue;
+      return first?.toLocaleDateString();
+    }
+    if (fieldValue?.from) {
+      const { from, to } = fieldValue;
+      return `${from ? from?.toLocaleDateString() : '-'} - ${to ? to?.toLocaleDateString() : '-'}`;
+    }
+    return fieldValue?.toLocaleDateString();
+  }, [fieldValue]);
 
   return (
     <React.Fragment>
-
       <input
-        value={fieldValue}
         {...register(calendarSettings.name, calendarSettings.rules)}
         className="hidden"
       />
 
       <PopoverModel>
-        <PopoverTrigger>
+        <PopoverTrigger asChild>
           <Button
             type="button"
             variant="outline"
@@ -133,23 +149,18 @@ const InputCalendar: React.FC<InputCalendarProps> = ({
               !fieldValue && 'text-muted-foreground'
             )}
           >
-            {fieldValue ? (
-              fieldValue?.toLocaleDateString()
-            ) : (
-              <span>{triggerSettings?.placeholder}</span>
-            )}
+            {previewDate}
             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent
-          className="w-auto p-0"
-          align="start"
-        >
-          {/* <FormCalendar {...{ ...calendarSettings, rules: undefined }} /> */}
-          <FormCalendar {...calendarSettings} />
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            {...calendarSettings}
+            selected={fieldValue}
+            onSelect={handleSelect}
+          />
         </PopoverContent>
-        
       </PopoverModel>
 
       {error && <Label className="text-error text-xs">{error}</Label>}
