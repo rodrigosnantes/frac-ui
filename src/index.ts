@@ -23,3 +23,8 @@ export * from '@/components/ui/alert-dialog';
 export * from '@/components/ui/form';
 export * from '@/components/ui/toast';
 export * from '@/components/ui/loading';
+export * from '@/components/ui/table';
+export * from '@/components/ui/scroll-area';
+export * from '@/components/ui/calendar';
+export * from '@/components/ui/context-menu';
+export * from '@/components/ui/drawer';
