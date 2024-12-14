@@ -5,6 +5,15 @@
 
 // import {LoadingSimpleExample, LoadingCustomExample, LoadingSizeExample } from './examples/loading';
 // import { AlertChildrenExample, AlertSimpleExample, AlertSubtitleExample, AlertVariantsExample } from './examples/alert';
+// import { AvatarSimpleExample, AvatarCustomExample } from './examples/avatar';
+import { BadgeSimpleExample, BadgeCustomExample, BadgeVariantsExample } from './examples/badge';
+
+
+
+export default function App() {
+  return <BadgeVariantsExample />;
+}
+
 
 // import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
 // import { useCallback } from 'react';
@@ -119,7 +128,3 @@
 //   );
 // }
 
-
-export default function App() {
-  return <AlertChildrenExample />;
-}
