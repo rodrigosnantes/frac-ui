@@ -8,7 +8,7 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-background text-primary-foreground',
+        default: 'bg-background text-black',
         success: 'bg-success text-primary-foreground',
         info: 'bg-info text-primary-foreground',
         error: 'bg-error text-primary-foreground',
