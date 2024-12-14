@@ -8,10 +8,11 @@
 // import { AvatarSimpleExample, AvatarCustomExample } from './examples/avatar';
 // import { BadgeSimpleExample, BadgeCustomExample, BadgeVariantsExample } from './examples/badge';
 // import { ButtonSimpleExample, ButtonCustomExample, ButtonSizeExample, ButtonIconExample, ButtonVariantsExample } from './examples/button';
-import { SeparatorHorizontalExample, SeparatorVerticalExample, SeparatorCustomExample } from './examples/separator';
+// import { SeparatorHorizontalExample, SeparatorVerticalExample, SeparatorCustomExample } from './examples/separator';
+import { TableSimpleExample } from './examples/table';
 
 export default function App() {
-  return <SeparatorCustomExample />;
+  return <TableSimpleExample />;
 }
 
 // import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
