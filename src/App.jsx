@@ -6,14 +6,13 @@
 // import {LoadingSimpleExample, LoadingCustomExample, LoadingSizeExample } from './examples/loading';
 // import { AlertChildrenExample, AlertSimpleExample, AlertSubtitleExample, AlertVariantsExample } from './examples/alert';
 // import { AvatarSimpleExample, AvatarCustomExample } from './examples/avatar';
-import { BadgeSimpleExample, BadgeCustomExample, BadgeVariantsExample } from './examples/badge';
-
-
+// import { BadgeSimpleExample, BadgeCustomExample, BadgeVariantsExample } from './examples/badge';
+// import { ButtonSimpleExample, ButtonCustomExample, ButtonSizeExample, ButtonIconExample, ButtonVariantsExample } from './examples/button';
+import { SeparatorHorizontalExample, SeparatorVerticalExample, SeparatorCustomExample } from './examples/separator';
 
 export default function App() {
-  return <BadgeVariantsExample />;
+  return <SeparatorCustomExample />;
 }
-
 
 // import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
 // import { useCallback } from 'react';
@@ -127,4 +126,3 @@ export default function App() {
 //     </div>
 //   );
 // }
-
