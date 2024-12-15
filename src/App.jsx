@@ -10,19 +10,21 @@
 // import { ButtonSimpleExample, ButtonCustomExample, ButtonSizeExample, ButtonIconExample, ButtonVariantsExample } from './examples/button';
 // import { SeparatorHorizontalExample, SeparatorVerticalExample, SeparatorCustomExample } from './examples/separator';
 // import { AccordionSimpleExample, AccordionCustomTriggerExample } from './examples/accordion';
-import {
-  AlertDialogSimpleExample,
-  AlertDialogTitleExample,
-  AlertDialogSubTitleExample,
-  AlertDialogHiddenCancelExample,
-  AlertDialogHiddenConfirmExample,
-  AlertDialogCancelCallbackExample,
-  AlertDialogConfirmCallbackExample,
-  AlertDialogSkipPatterCallbackExample
-} from './examples/alert-dialog';
+// import {
+//   AlertDialogSimpleExample,
+//   AlertDialogTitleExample,
+//   AlertDialogSubTitleExample,
+//   AlertDialogHiddenCancelExample,
+//   AlertDialogHiddenConfirmExample,
+//   AlertDialogCancelCallbackExample,
+//   AlertDialogConfirmCallbackExample,
+//   AlertDialogSkipPatterCallbackExample
+// } from './examples/alert-dialog';
+
+import { CardSimpleExample } from './examples/card';
 
 export default function App() {
-  return <AlertDialogSkipPatterCallbackExample />;
+  return <CardSimpleExample />;
 }
 
 // import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
