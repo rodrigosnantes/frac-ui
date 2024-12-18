@@ -132,6 +132,8 @@ const Dialog: React.FC<DialogProps> = ({
     md: 'max-w-md',
     lg: 'max-w-lg',
     xl: 'max-w-xl',
+    xxl: 'max-w-xl',
+    full: 'max-w-full',
   };
 
   return (
@@ -139,7 +141,7 @@ const Dialog: React.FC<DialogProps> = ({
       <DialogTrigger asChild>{dialogTrigger}</DialogTrigger>
 
       <DialogContent
-        className={`${dialog?.size ? sizes[dialog.size] : sizes.md} ${
+        className={`${dialog?.size && sizes[dialog.size]} ${
           dialog?.customSize
         }`}
       >
@@ -197,8 +199,8 @@ export {
 
 export type DialogProps = {
   dialog: {
-    size: 'md';
-    customSize: '';
+    size?: 'md' | 'lg' | 'sm' | 'xl' | 'xxl' | 'full';
+    customSize?: String;
   };
   dialogTrigger: React.ReactNode;
   header: { title: string; subtitle: string };

@@ -5,6 +5,19 @@ import { Alert } from '@/components/ui/alert';
 const meta: Meta<typeof Alert> = {
   title: 'UI/Alert',
   component: Alert,
+  parameters: {
+    layout: 'centered',
+    controls: {
+      expanded: false, // Exibe todas as props no painel de controle.
+    },
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#000000' },
+      ],
+    },
+  },
   argTypes: {
     modelSettings: {
       control: 'object',

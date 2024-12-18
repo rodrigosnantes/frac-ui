@@ -5,7 +5,17 @@ const meta = {
   title: 'UI/Button', // Nome da categoria e do componente no Storybook
   component: Button,
   parameters: {
-    layout: 'centered', // Centraliza o componente na Canvas do Storybook
+    layout: 'centered',
+    controls: {
+      expanded: false, // Exibe todas as props no painel de controle.
+    },
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#000000' },
+      ],
+    },
   },
   tags: ['autodocs'], // Gera automaticamente a documentação
   argTypes: {

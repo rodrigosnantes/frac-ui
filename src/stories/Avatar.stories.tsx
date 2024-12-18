@@ -6,7 +6,17 @@ const meta: Meta<typeof Avatar> = {
   title: 'UI/Avatar',
   component: Avatar,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    controls: {
+      expanded: false, // Exibe todas as props no painel de controle.
+    },
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#000000' },
+      ],
+    },
   },
   argTypes: {
     className: { control: 'text', description: 'Classe personalizada do Avatar' },

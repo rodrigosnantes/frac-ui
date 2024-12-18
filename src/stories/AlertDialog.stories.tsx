@@ -5,6 +5,19 @@ import { Button } from '@/components/ui/button';
 const meta: Meta<typeof AlertDialog> = {
   title: 'UI/AlertDialog',
   component: AlertDialog,
+  parameters: {
+    layout: 'centered',
+    controls: {
+      expanded: false, // Exibe todas as props no painel de controle.
+    },
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#000000' },
+      ],
+    },
+  },
   argTypes: {
     title: { control: 'text', description: 'Título principal do dialog' },
     subtitle: { control: 'text', description: 'Subtítulo ou descrição do dialog' },

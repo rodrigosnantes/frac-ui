@@ -6,6 +6,16 @@ const meta: Meta<typeof Calendar> = {
   title: 'UI/Calendar',
   parameters: {
     layout: 'centered',
+    controls: {
+      expanded: false, // Exibe todas as props no painel de controle.
+    },
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#000000' },
+      ],
+    },
   },
   component: Calendar,
   tags: ['autodocs'],
