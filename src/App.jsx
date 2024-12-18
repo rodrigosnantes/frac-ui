@@ -9,10 +9,22 @@
 // import { BadgeSimpleExample, BadgeCustomExample, BadgeVariantsExample } from './examples/badge';
 // import { ButtonSimpleExample, ButtonCustomExample, ButtonSizeExample, ButtonIconExample, ButtonVariantsExample } from './examples/button';
 // import { SeparatorHorizontalExample, SeparatorVerticalExample, SeparatorCustomExample } from './examples/separator';
-import { TableSimpleExample } from './examples/table';
+// import { AccordionSimpleExample, AccordionCustomTriggerExample } from './examples/accordion';
+// import {
+//   AlertDialogSimpleExample,
+//   AlertDialogTitleExample,
+//   AlertDialogSubTitleExample,
+//   AlertDialogHiddenCancelExample,
+//   AlertDialogHiddenConfirmExample,
+//   AlertDialogCancelCallbackExample,
+//   AlertDialogConfirmCallbackExample,
+//   AlertDialogSkipPatterCallbackExample
+// } from './examples/alert-dialog';
+
+import { CardSimpleExample } from './examples/card';
 
 export default function App() {
-  return <TableSimpleExample />;
+  return <CardSimpleExample />;
 }
 
 // import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';

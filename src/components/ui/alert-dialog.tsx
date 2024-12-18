@@ -103,7 +103,6 @@ AlertDialogDescription.displayName =
 const AlertDialog: React.FC<AlertDialogProps> = ({
   title,
   subtitle,
-  elementTrigger,
   cancelSettings = {
     show: true,
     callback: null,
@@ -138,7 +137,7 @@ const AlertDialog: React.FC<AlertDialogProps> = ({
         onClick={() => setOpen(true)}
         className={elementTriggerSettings?.className}
       >
-        {elementTrigger}
+        {elementTriggerSettings?.children}
       </AlertDialogTrigger>
 
       <AlertDialogContent className={contentSettings?.className}>
@@ -167,6 +166,7 @@ const AlertDialog: React.FC<AlertDialogProps> = ({
             <Button
               disabled={confirmSettings?.disabled}
               onClick={handleConfirm}
+              variant='default'
               className={confirmSettings?.className}
             >
               {confirmSettings?.label || 'Continue'}
@@ -194,9 +194,8 @@ export {
 export type AlertDialogProps = {
   title?: string;
   subtitle?: string;
-  elementTrigger: React.ReactNode;
   rootSettings?: rootProps;
-  elementTriggerSettings?: defaultProps;
+  elementTriggerSettings: elementTriggerSettingsProps;
   contentSettings?: defaultProps;
   headerSettings?: headerProps;
   footerSettings?: defaultProps;
@@ -208,9 +207,15 @@ export type defaultProps = {
   className?: string;
 };
 
+export type elementTriggerSettingsProps = defaultProps & {
+  className?: string;
+  children: any;
+};
+
 export type rootProps = defaultProps & {
   open?: boolean;
 };
+
 export type headerProps = defaultProps & {
   className?: string;
   titleClasses: string;
