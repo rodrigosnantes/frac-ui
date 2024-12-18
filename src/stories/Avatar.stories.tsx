@@ -5,6 +5,9 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 const meta: Meta<typeof Avatar> = {
   title: 'UI/Avatar',
   component: Avatar,
+  parameters: {
+    layout: 'centered'
+  },
   argTypes: {
     className: { control: 'text', description: 'Classe personalizada do Avatar' },
   },

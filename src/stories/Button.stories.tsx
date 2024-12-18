@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '@/components/ui/button';
 
-// Defina os metadados para as histórias
 const meta = {
   title: 'UI/Button', // Nome da categoria e do componente no Storybook
   component: Button,

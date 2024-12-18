@@ -23,6 +23,7 @@ const meta: Meta<typeof Alert> = {
       description: 'Configurações dos filhos do alerta.',
     },
   },
+  tags: ['autodocs'],
 };
 
 export default meta;
