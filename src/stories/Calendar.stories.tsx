@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Calendar, FormCalendar, InputCalendar } from '@/components/ui/calendar';
-import { useForm, FormProvider } from 'react-hook-form';
+import { Calendar  } from '@/components/ui/calendar';
 
 const meta: Meta<typeof Calendar> = {
   title: 'UI/Calendar',
