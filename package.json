@@ -1,6 +1,6 @@
 {
   "name": "frac-ui",
-  "version": "1.4.22",
+  "version": "1.4.23",
   "main": "dist/frac-ui.umd.js",
   "module": "dist/frac-ui.es.js",
   "types": "dist/index.d.ts",
