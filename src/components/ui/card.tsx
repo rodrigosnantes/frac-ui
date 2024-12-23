@@ -1,10 +1,5 @@
 import * as React from 'react';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/card}.
- */
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -88,3 +83,9 @@ export {
   CardDescription,
   CardContent,
 };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/card}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/747143189/Documenta+o+do+Componente+Card}.
+ */

@@ -12,10 +12,6 @@ import {
 
 import { cn } from '@/lib/utils';
 
-/**
- * {@link https://ui.shadcn.com/docs/components/checkbox}.
- */
-
 const CheckboxModel = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
@@ -92,3 +88,8 @@ interface CheckboxProps {
   className?: string; // Opções de estilização para o input
   containerclass?: string; // Opções de estilização para o container do input
 }
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/checkbox}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/744685605/Documenta+o+do+componente+Checkbox}.
+ */

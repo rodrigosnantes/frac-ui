@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { Controller, RegisterOptions } from 'react-hook-form';
 import { Label } from '@/components/ui/label';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/input}.
- * {@link https://www.w3schools.com/html/html_form_attributes.asp}.
- */
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
@@ -77,3 +71,9 @@ enum InputTypes {
 }
 
 export { InputModel, Input, InputTypes };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/input}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/743702529/Documenta+o+do+componente+Input}.
+ */

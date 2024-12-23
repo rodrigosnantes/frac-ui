@@ -5,11 +5,19 @@
 
 // import {LoadingSimpleExample, LoadingCustomExample, LoadingSizeExample } from './examples/loading';
 // import { AlertChildrenExample, AlertSimpleExample, AlertSubtitleExample, AlertVariantsExample } from './examples/alert';
-// import { AvatarSimpleExample, AvatarCustomExample } from './examples/avatar';
+// import { AvatarSimpleExample, AvatarCustomExample, AvatarCustomSize, AvatarWithFallback } from './examples/avatar';
 // import { BadgeSimpleExample, BadgeCustomExample, BadgeVariantsExample } from './examples/badge';
 // import { ButtonSimpleExample, ButtonCustomExample, ButtonSizeExample, ButtonIconExample, ButtonVariantsExample } from './examples/button';
 // import { SeparatorHorizontalExample, SeparatorVerticalExample, SeparatorCustomExample } from './examples/separator';
-// import { AccordionSimpleExample, AccordionCustomTriggerExample } from './examples/accordion';
+// import {
+//   AccordionSimpleExample,
+//   AccordionCustomTriggerExample,
+//   AccordionMultipleSelectExample,
+//   AccordionDisableExample,
+//   AccordionControlCollapseExample,
+//   AccordionStartOpenExample,
+//   AccordionDisableItemExample
+// } from './examples/accordion';
 // import {
 //   AlertDialogSimpleExample,
 //   AlertDialogTitleExample,
@@ -21,10 +29,11 @@
 //   AlertDialogSkipPatterCallbackExample
 // } from './examples/alert-dialog';
 
-import { CardSimpleExample } from './examples/card';
+// import { CardSimpleExample } from './examples/card';
 
 export default function App() {
-  return <CardSimpleExample />;
+  // return <AccordionDisableItemExample />;
+  return null;
 }
 
 // import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';

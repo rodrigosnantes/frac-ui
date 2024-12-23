@@ -85,3 +85,10 @@ export {
   AlertChildrenExample,
   AlertVariantsExample,
 };
+
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/alert}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/747110420/Documenta+o+do+Componente+Alert}.
+ */

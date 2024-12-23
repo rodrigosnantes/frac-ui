@@ -187,3 +187,9 @@ interface FormCalendarProps {
 }
 
 export { Calendar, FormCalendar, InputCalendar };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/calendar}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/751992918/Documenta+o+do+componente+Calendar}.
+ */

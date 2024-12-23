@@ -1,12 +1,7 @@
 import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Check, ChevronRight, Circle } from 'lucide-react';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/dropdown-menu}.
- */
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -200,3 +195,8 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
 };
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/dropdown-menu}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/752222271/Documenta+o+do+Componente+DropdownMenu}.
+ */

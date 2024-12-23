@@ -3,12 +3,7 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { Controller, RegisterOptions } from 'react-hook-form';
 import { Label } from '@/components/ui/label';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/select}.
- */
 
 const SelectModel = SelectPrimitive.Root;
 
@@ -220,3 +215,10 @@ export type Options = {
   name: string;
   value: any;
 };
+
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/select}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/744357921/Documenta+o+do+Componente+Select}.
+ */

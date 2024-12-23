@@ -8,7 +8,7 @@ const meta: Meta<typeof Select> = {
   tags: ['autodocs'],
   argTypes: {
     control: {
-      control: 'none',
+      control: 'object',
       description: 'Instância do `control` do React Hook Form.',
     },
     rules: {

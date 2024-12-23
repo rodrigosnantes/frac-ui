@@ -8,7 +8,7 @@ const meta: Meta<typeof Popover> = {
   tags: ['autodocs'],
   argTypes: {
     elementTrigger: {
-      control: 'none',
+      control: 'object',
       description: 'Elemento que dispara o Popover.',
     },
     children: {

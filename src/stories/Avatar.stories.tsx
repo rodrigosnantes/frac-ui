@@ -2,13 +2,15 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
+
 const meta: Meta<typeof Avatar> = {
   title: 'UI/Avatar',
   component: Avatar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     controls: {
-      expanded: false, // Exibe todas as props no painel de controle.
+      expanded: false,
     },
     backgrounds: {
       default: 'light',
@@ -19,7 +21,10 @@ const meta: Meta<typeof Avatar> = {
     },
   },
   argTypes: {
-    className: { control: 'text', description: 'Classe personalizada do Avatar' },
+    className: {
+      control: 'text',
+      description: 'Classe personalizada do Avatar',
+    },
   },
 };
 
@@ -30,25 +35,12 @@ type Story = StoryObj<typeof Avatar>;
 export const Default: Story = {
   args: {
     children: (
-      <>
-        <AvatarImage src="https://github.com/shadcn.png" alt="Default Avatar" />
-        <AvatarFallback>SC</AvatarFallback>
-      </>
-    ),
-    className: '',
-  },
-};
-
-export const WithImage: Story = {
-  args: {
-    children: (
-      <>
+      <React.Fragment>
         <AvatarImage
-          src="https://placekitten.com/200/200"
-          alt="Avatar com imagem"
+          src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
+          alt="Default Avatar"
         />
-        <AvatarFallback>KT</AvatarFallback>
-      </>
+      </React.Fragment>
     ),
   },
 };
@@ -56,10 +48,10 @@ export const WithImage: Story = {
 export const WithFallback: Story = {
   args: {
     children: (
-      <>
+      <React.Fragment>
         <AvatarImage src="" alt="Avatar vazio" />
         <AvatarFallback>AB</AvatarFallback>
-      </>
+      </React.Fragment>
     ),
   },
 };
@@ -68,13 +60,29 @@ export const CustomSize: Story = {
   args: {
     className: 'h-20 w-20',
     children: (
-      <>
+      <React.Fragment>
         <AvatarImage
-          src="https://placekitten.com/300/300"
+          src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
           alt="Avatar grande"
         />
         <AvatarFallback>LG</AvatarFallback>
-      </>
+      </React.Fragment>
+    ),
+  },
+};
+
+export const CustomColor: Story = {
+  args: {
+    className: 'h-20 w-20',
+    children: (
+      <React.Fragment>
+        <AvatarImage
+        className="bg-red-500"
+          src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
+          alt="Avatar grande"
+        />
+        <AvatarFallback>LG</AvatarFallback>
+      </React.Fragment>
     ),
   },
 };

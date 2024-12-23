@@ -1,11 +1,6 @@
 import * as React from 'react';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/scroll-area}.
- */
 
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
@@ -48,3 +43,9 @@ const ScrollBar = React.forwardRef<
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 
 export { ScrollArea, ScrollBar };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/scroll-area}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/758415367/Documenta+o+do+componente+Scroll-area}.
+ */

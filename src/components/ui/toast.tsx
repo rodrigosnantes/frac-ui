@@ -3,12 +3,7 @@ import * as ToastPrimitives from '@radix-ui/react-toast';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/toast}.
- */
 
 const ToastProvider = ToastPrimitives.Provider;
 
@@ -176,3 +171,9 @@ export {
   ToastClose,
   ToastAction,
 };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/toast}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/751992876/Documenta+o+do+componente+Toasty}.
+ */

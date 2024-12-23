@@ -1,11 +1,6 @@
 import * as React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/tooltip}.
- */
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
@@ -47,7 +42,6 @@ const Tooltip = React.forwardRef<
   ) => (
     <TooltipProvider delayDuration={delayDuration}>
       <TooltipModel defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
-
         <TooltipTrigger className={triggerSettings?.className} asChild>
           {triggerSettings.children}
         </TooltipTrigger>
@@ -60,7 +54,6 @@ const Tooltip = React.forwardRef<
         >
           {contentSettings.children}
         </TooltipContent>
-        
       </TooltipModel>
     </TooltipProvider>
   )
@@ -90,3 +83,7 @@ export {
   TooltipContent,
   TooltipProvider,
 };
+
+/**
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/748486657/Documenta+o+do+Componente+Tooltip}.
+ */

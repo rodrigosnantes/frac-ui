@@ -3,12 +3,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/dialog}.
- */
 
 const DialogModel = DialogPrimitive.Root;
 
@@ -218,3 +213,9 @@ export type DialogProps = {
   };
   children: React.ReactNode;
 };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/dialog}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/751960112/Documenta+o+do+Componente+Dialog}.
+ */

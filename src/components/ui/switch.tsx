@@ -4,10 +4,6 @@ import { Controller, RegisterOptions } from 'react-hook-form';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
-/**
- * {@link https://ui.shadcn.com/docs/components/switch}.
- */
-
 const SwitchModel = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
@@ -69,3 +65,8 @@ const Switch = React.forwardRef<
 Switch.displayName = SwitchPrimitives.Root.displayName;
 
 export { SwitchModel, Switch };
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/switch}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/744652820/Documenta+o+do+Componente+Switch}.
+ */

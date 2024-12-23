@@ -16,7 +16,7 @@ const meta: Meta<typeof Textarea> = {
       description: 'Rótulo associado ao campo de texto.',
     },
     control: {
-      control: 'none',
+      control: 'object',
       description: 'Instância do `control` do React Hook Form.',
     },
     rules: {

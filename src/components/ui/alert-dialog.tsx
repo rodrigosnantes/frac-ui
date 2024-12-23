@@ -4,9 +4,7 @@ import { Button } from '@/components/ui/button';
 
 import { cn } from '@/lib/utils';
 
-/**
- * {@link https://ui.shadcn.com/docs/components/alert-dialog}.
- */
+
 
 const AlertDialogModel = AlertDialogPrimitive.Root;
 
@@ -229,3 +227,10 @@ export type actionButtonProps = defaultProps & {
   show?: boolean;
   skipPattern?: boolean; // deve ignorar o comportamento padrão do dialogo
 };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/alert-dialog}.
+ * {@link https://www.radix-ui.com/primitives/docs/components/alert-dialog#api-reference}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/746749956/Documenta+o+do+Componente+AlertDialog}.
+ */

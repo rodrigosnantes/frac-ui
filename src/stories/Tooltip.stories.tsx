@@ -25,7 +25,6 @@ const meta: Meta<typeof Tooltip> = {
       description: 'Se o Tooltip deve estar aberto por padrão.',
     },
     onOpenChange: {
-      control: 'function',
       description: 'Callback acionado quando o estado de abertura muda.',
     },
   },

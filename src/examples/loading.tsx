@@ -1,4 +1,4 @@
-import { Loading, LoadingProps } from '@/components/ui/loading';
+import { Loading } from '@/components/ui/loading';
 import React from 'react';
 
 const LoadingSimpleExample: React.FC = () => {

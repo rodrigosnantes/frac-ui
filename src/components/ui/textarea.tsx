@@ -4,9 +4,6 @@ import { cn } from '@/lib/utils';
 import { Controller, RegisterOptions } from 'react-hook-form';
 import { Label } from '@/components/ui/label';
 
-/**
- * {@link https://ui.shadcn.com/docs/components/textarea}.
- */
 
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
@@ -66,3 +63,10 @@ const Textarea = React.forwardRef<
 Textarea.displayName = 'Textarea';
 
 export { Textarea, TextareaModel };
+
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/textarea}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/744554550/Documenta+o+do+Componente+Textarea}.
+ */

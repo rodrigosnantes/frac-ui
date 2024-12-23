@@ -1,4 +1,4 @@
-const Loading: React.FC = ({ size = 'sm', className = '' }: LoadingProps) => {
+const Loading: React.FC<LoadingProps> = ({ size = 'sm', className = '' }) => {
   const sizeOptions = {
     sm: 'h-10 w-10',
     md: 'h-20 w-20',
@@ -19,3 +19,7 @@ type LoadingProps = {
 };
 
 export { Loading, LoadingProps };
+
+/**
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/751992904/Documenta+o+do+componente+Loading}.
+ */

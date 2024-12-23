@@ -1,11 +1,6 @@
 import React, { ForwardedRef } from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-
 import { cn } from '@/lib/utils';
-
-/**
- * {@link https://ui.shadcn.com/docs/components/popover}.
- */
 
 const PopoverModel = PopoverPrimitive.Root;
 
@@ -49,3 +44,9 @@ type PopoverProps = {
 };
 
 export { Popover, PopoverModel, PopoverTrigger, PopoverContent, PopoverPortal };
+
+
+/**
+ * {@link https://ui.shadcn.com/docs/components/popover}.
+ * {@link https://fractaleng.atlassian.net/wiki/spaces/~5dc59577ffc8c10df0edf1f9/pages/746651683/Documenta+o+do+componente+Popover}.
+ */
