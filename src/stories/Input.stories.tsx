@@ -1,6 +1,5 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Input, InputModel, InputTypes } from '@/components/ui/input';
+import { Input, InputTypes } from '@/components/ui/input';
 import { useForm, FormProvider } from 'react-hook-form';
 
 const meta: Meta<typeof Input> = {
@@ -65,6 +64,11 @@ export const WithValidation: Story = {
       defaultValues: { validatedInput: '' },
     });
 
+    methods.setError('validatedInput', {
+      type: 'required',
+      message: 'Fiels is Required',
+    });
+
     return (
       <FormProvider {...methods}>
         <form className="space-y-4">
@@ -112,11 +116,7 @@ export const WithDifferentTypes: Story = {
             placeholder="Password input"
             type="password"
           />
-          <Input
-            name="colorInput"
-            control={methods.control}
-            type="color"
-          />
+          <Input name="colorInput" control={methods.control} type="color" />
         </form>
       </FormProvider>
     );
