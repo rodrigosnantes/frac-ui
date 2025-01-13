@@ -1,7 +1,7 @@
-// import { Input } from '@/components/ui/input';
-// import { Button } from '@/components/ui/button';
-// import { Checkbox } from '@/components/ui/checkbox';
-// import { InputCalendar } from '@/components/ui/calendar';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { InputCalendar, FormCalendar } from '@/components/ui/calendar';
 
 // import {LoadingSimpleExample, LoadingCustomExample, LoadingSizeExample } from './examples/loading';
 // import { AlertChildrenExample, AlertSimpleExample, AlertSubtitleExample, AlertVariantsExample } from './examples/alert';
@@ -31,120 +31,118 @@
 
 // import { CardSimpleExample } from './examples/card';
 
+import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
+import { useCallback } from 'react';
+
 export default function App() {
-  // return <AccordionDisableItemExample />;
-  return null;
+  const handleSubmit = (data) => {
+    console.log('data', data);
+  };
+
+  return (
+    <Form
+      validationMode="onBlur"
+      onSubmit={handleSubmit}
+      defaultValues={{ name: 'rodrigo', sobrenome: 'Nantes' }}
+    >
+      <FormContent />
+    </Form>
+  );
 }
 
-// import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
-// import { useCallback } from 'react';
+function FormContent() {
+  const { reset, getFieldErrors, clearForm, setValue } = useGlobalFormContext();
+  const res = useFormState();
 
-// export default function App() {
-//   const handleSubmit = (data) => {
-//     console.log('data', data);
-//   };
+  const handleReset = () => {
+    reset();
+  };
 
-//   return (
-//     <Form
-//       validationMode="all"
-//       onSubmit={handleSubmit}
-//       defaultValues={{ name: 'rodrigo', sobrenome: 'Nantes' }}
-//     >
-//       <FormContent />
-//     </Form>
-//   );
-// }
+  const ClearForm = () => {
+    clearForm();
+  };
 
-// function FormContent() {
-//   const { reset, getFieldErrors, clearForm, setValue } = useGlobalFormContext();
-//   const res = useFormState();
+  const showErrorsForm = () => {
+    const formErrors = getFieldErrors();
+    console.log(formErrors);
+  };
 
-//   const handleReset = () => {
-//     reset();
-//   };
+  const setNameValue = useCallback(() => {
+    setValue('name', 'Rodrigo Nantes 123');
+  }, [setValue]);
 
-//   const ClearForm = () => {
-//     clearForm();
-//   };
+  const checkFormContext = useCallback(() => {
+    console.log('res', res);
+  }, [res]);
 
-//   const showErrorsForm = () => {
-//     const formErrors = getFieldErrors();
-//     console.log(formErrors);
-//   };
+  return (
+    <div className="w-full mt-9 flex justify-center">
+      <div className="w-96">
+        <div className="gap-2 flex flex-col">
+          <Input
+            label="Nome do usuário"
+            name="name"
+            // placeholder="Ex: Rodrigo"
+            rules={{ required: 'Campo Obrigatório' }}
+          />
 
-//   const setNameValue = useCallback(() => {
-//     setValue('name', 'Rodrigo Nantes 123');
-//   }, [setValue]);
+          <Input
+            label="Sobrenome"
+            name="sobrenome"
+            // placeholder="sobrenome"
+            rules={{ required: 'Campo Obrigatório' }}
+          />
 
-//   const checkFormContext = useCallback(() => {
-//     console.log('res', res);
-//   }, [res]);
+          <Input
+            label="Email"
+            name="email"
+            placeholder="fractal@gmail.ocom"
+            rules={{ required: 'Campo Obrigatório' }}
+          />
 
-//   return (
-//     <div className="w-full mt-9 flex justify-center">
-//       <div className="w-96">
-//         <div className="gap-2 flex flex-col">
-//           <Input
-//             name="name"
-//             placeholder="Nome"
-//             rules={{ required: 'Campo Obrigatório' }}
-//           />
+          <Checkbox name="gender" />
 
-//           <Input
-//             name="sobrenome"
-//             placeholder="sobrenome"
-//             rules={{ required: 'Campo Obrigatório' }}
-//           />
+          <InputCalendar
+            name="date"
+            triggerSettings={{ placeholder: 'Data', label: 'Informe  a data' }}
+            calendarSettings={{
+              mode: 'multiple',
+              name: 'date',
+              rules: { required: 'Campo Obrigatório' },
+            }}
+          /> 
 
-//           <Input
-//             name="email"
-//             placeholder="Email"
-//             rules={{ required: 'Campo Obrigatório' }}
-//           />
+          {/* <FormCalendar
+            name="date"
+            rules={{ required: 'A data é obrigatória.' }}
+            className="my-custom-class"
+          /> */}
+        </div>
 
-//           <Checkbox name="gender" />
+        <div className="flex gap-4 flex-wrap mt-4">
+          <Button type="button" onClick={handleReset}>
+            Reset form
+          </Button>
 
-//           <InputCalendar
-//             name="date"
-//             triggerSettings={{ placeholder: 'Data' }}
-//             calendarSettings={{
-//               mode: 'default',
-//               name: 'date',
-//               rules: { required: 'Campo Obrigatório' },
-//             }}
-//           />
+          <Button type="button" onClick={setNameValue}>
+            set name
+          </Button>
 
-//           {/* <FormCalendar
-//             name="date"
-//             rules={{ required: 'A data é obrigatória.' }}
-//             className="my-custom-class"
-//           /> */}
-//         </div>
+          <Button type="button" onClick={showErrorsForm}>
+            get form Erros
+          </Button>
 
-//         <div className="flex gap-4 flex-wrap mt-4">
-//           <Button type="button" onClick={handleReset}>
-//             Reset form
-//           </Button>
+          <Button type="button" onClick={ClearForm}>
+            Clear form
+          </Button>
 
-//           <Button type="button" onClick={setNameValue}>
-//             set name
-//           </Button>
+          <Button type="button" onClick={checkFormContext}>
+            check formContext
+          </Button>
 
-//           <Button type="button" onClick={showErrorsForm}>
-//             get form Erros
-//           </Button>
-
-//           <Button type="button" onClick={ClearForm}>
-//             Clear form
-//           </Button>
-
-//           <Button type="button" onClick={checkFormContext}>
-//             check formContext
-//           </Button>
-
-//           <Button type="submit">Submit</Button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+          <Button type="submit">Submit</Button>
+        </div>
+      </div>
+    </div>
+  );
+}

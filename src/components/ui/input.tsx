@@ -27,10 +27,11 @@ const Input = React.forwardRef<
   HTMLInputElement,
   InputProps & {
     name: string;
+    label?: string;
     control?: any;
     rules?: RegisterOptions;
   }
->(({ className, control, type, rules, ...props }, ref) => {
+>(({ className, control, type, rules, label, ...props }, ref) => {
   return (
     <Controller
       name={props.name}
@@ -39,6 +40,7 @@ const Input = React.forwardRef<
       render={({ field, fieldState: { error } }) => {
         return (
           <React.Fragment>
+            {label && <Label className="">{label}</Label>}
             <InputModel
               {...field}
               {...props}
@@ -46,9 +48,7 @@ const Input = React.forwardRef<
               type={type || InputTypes.text}
               className={className}
             />
-            {error && (
-              <Label className="text-error text-xs">{error.message}</Label>
-            )}
+            {error && <Label className="text-error text-xs">{error.message}</Label>}
           </React.Fragment>
         );
       }}
@@ -71,7 +71,6 @@ enum InputTypes {
 }
 
 export { InputModel, Input, InputTypes };
-
 
 /**
  * {@link https://ui.shadcn.com/docs/components/input}.

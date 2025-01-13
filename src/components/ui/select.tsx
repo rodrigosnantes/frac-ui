@@ -153,7 +153,6 @@ const Select = React.forwardRef<HTMLInputElement, SelectInputProps>(
         control={control}
         rules={rules}
         render={({ field, fieldState: { error } }) => {
-          console.log('error', error);
           return (
             <div>
               <SelectModel

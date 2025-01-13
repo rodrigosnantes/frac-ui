@@ -8,7 +8,6 @@ import { Controller } from 'react-hook-form';
 
 import { Label } from '@/components/ui/label';
 import { CalendarIcon } from 'lucide-react';
-
 import {
   PopoverModel,
   PopoverTrigger,
@@ -111,12 +110,24 @@ const InputCalendar: React.FC<InputCalendarProps> = ({
   calendarSettings: FormCalendarProps;
 }) => {
   const fieldValue = useWatch({ name: calendarSettings.name });
-  const { getFieldErrors, register, setValue, clearErrors } = useGlobalFormContext();
+  const {
+    getFieldErrors,
+    register,
+    setValue,
+    clearErrors,
+    trigger,
+    validationMode,
+  } = useGlobalFormContext();
   const error = getFieldErrors()?.[calendarSettings.name]?.message;
 
   const handleSelect = (date: any) => {
     setValue(calendarSettings.name, date);
     clearErrors(calendarSettings.name);
+  };
+
+  const handleValidation = async () => {
+    if (validationMode !== 'onBlur') return;
+    await trigger(calendarSettings.name);
   };
 
   const previewDate = React.useMemo(() => {
@@ -127,7 +138,9 @@ const InputCalendar: React.FC<InputCalendarProps> = ({
     }
     if (fieldValue?.from) {
       const { from, to } = fieldValue;
-      return `${from ? from?.toLocaleDateString() : '-'} - ${to ? to?.toLocaleDateString() : '-'}`;
+      return `${from ? from?.toLocaleDateString() : '-'} - ${
+        to ? to?.toLocaleDateString() : '-'
+      }`;
     }
     return fieldValue?.toLocaleDateString();
   }, [fieldValue]);
@@ -140,7 +153,10 @@ const InputCalendar: React.FC<InputCalendarProps> = ({
       />
 
       <PopoverModel>
-        <PopoverTrigger asChild>
+        <PopoverTrigger>
+          {triggerSettings?.label && (
+            <Label className="flex mb-2">{triggerSettings.label}</Label>
+          )}
           <Button
             type="button"
             variant="outline"
@@ -154,7 +170,11 @@ const InputCalendar: React.FC<InputCalendarProps> = ({
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent
+          className="w-auto p-0"
+          align="start"
+          onCloseAutoFocus={handleValidation}
+        >
           <Calendar
             {...calendarSettings}
             selected={fieldValue}
@@ -171,6 +191,7 @@ const InputCalendar: React.FC<InputCalendarProps> = ({
 interface InputCalendarProps {
   triggerSettings: {
     placeholder?: string;
+    label?: string;
     className?: string;
   };
   calendarSettings: {
@@ -187,7 +208,6 @@ interface FormCalendarProps {
 }
 
 export { Calendar, FormCalendar, InputCalendar };
-
 
 /**
  * {@link https://ui.shadcn.com/docs/components/calendar}.
