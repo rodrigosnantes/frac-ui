@@ -47,9 +47,9 @@ const Switch = React.forwardRef<
               <SwitchModel
                 ref={ref}
                 {...props}
+                className={className}
                 checked={field.value || false}
                 onCheckedChange={field.onChange}
-                className={className}
               />
               <Label>{label}</Label>
             </div>

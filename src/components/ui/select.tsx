@@ -4,6 +4,7 @@ import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { Controller, RegisterOptions } from 'react-hook-form';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import { useGlobalFormContext } from './form';
 
 const SelectModel = SelectPrimitive.Root;
 
@@ -146,7 +147,9 @@ const SelectSeparator = React.forwardRef<
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 const Select = React.forwardRef<HTMLInputElement, SelectInputProps>(
-  ({ rules, label, placeholder, options, control, ...props }, ref) => {
+  ({ rules, label, selectLabel, placeholder, options, control, ...props }) => {
+    const { trigger, validationMode } = useGlobalFormContext();
+
     return (
       <Controller
         name={props.name}
@@ -154,18 +157,27 @@ const Select = React.forwardRef<HTMLInputElement, SelectInputProps>(
         rules={rules}
         render={({ field, fieldState: { error } }) => {
           return (
-            <div>
+            <React.Fragment>
+              {!label ? null : <Label>{label}</Label>}
               <SelectModel
-                value={field.value || ''}
+                {...field}
+                value={field.value}
                 onValueChange={(value) => field.onChange(value)}
+                onOpenChange={(prev) => {
+                  if (!prev && validationMode === 'onBlur') {
+                    setTimeout(() => {
+                      trigger(props.name);
+                    }, 0);
+                  }
+                }}
               >
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger>
                   {placeholder && <SelectValue placeholder={placeholder} />}
                 </SelectTrigger>
 
                 <SelectContent>
                   <SelectGroup>
-                    {label && <SelectLabel>{label}</SelectLabel>}
+                    {selectLabel && <SelectLabel>{selectLabel}</SelectLabel>}
                     {(options || []).map((item, index) => {
                       return (
                         <SelectItem key={index} value={item.value}>
@@ -179,7 +191,7 @@ const Select = React.forwardRef<HTMLInputElement, SelectInputProps>(
               {error && (
                 <Label className="text-error text-xs">{error.message}</Label>
               )}
-            </div>
+            </React.Fragment>
           );
         }}
       />
@@ -205,7 +217,8 @@ export type SelectInputProps = {
   control?: any;
   rules: RegisterOptions;
   name: string;
-  label: string;
+  label?: string;
+  selectLabel?: string;
   options: Options[];
   placeholder: string;
 };
@@ -214,8 +227,6 @@ export type Options = {
   name: string;
   value: any;
 };
-
-
 
 /**
  * {@link https://ui.shadcn.com/docs/components/select}.
