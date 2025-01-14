@@ -86,11 +86,11 @@ const FormCalendar: React.FC<FormCalendarProps> = ({ ...props }) => {
         return (
           <React.Fragment>
             <Calendar
-              {...field} // Integra o calendário ao estado do formulário
-              selected={field.value} // Passa o valor atual para o calendário
-              onSelect={field.onChange} // Atualiza o valor ao selecionar uma data
-              className={props?.className}
+              {...field}
               {...props}
+              selected={field.value} 
+              onSelect={field.onChange}
+              className={props?.className}
             />
             {error && (
               <Label className="text-error text-xs">{error.message}</Label>

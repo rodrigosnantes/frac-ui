@@ -42,7 +42,7 @@ const Textarea = React.forwardRef<
       render={({ field, fieldState: { error } }) => {
         return (
           <>
-            {label && <Label htmlFor="message">{label}</Label>}
+            {label && <Label>{label}</Label>}
             <TextareaModel
               {...field}
               {...props}
