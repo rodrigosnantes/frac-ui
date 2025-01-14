@@ -1,35 +1,5 @@
-import { Input } from '@/components/ui/input';
+import { Select } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { InputCalendar, FormCalendar } from '@/components/ui/calendar';
-
-// import {LoadingSimpleExample, LoadingCustomExample, LoadingSizeExample } from './examples/loading';
-// import { AlertChildrenExample, AlertSimpleExample, AlertSubtitleExample, AlertVariantsExample } from './examples/alert';
-// import { AvatarSimpleExample, AvatarCustomExample, AvatarCustomSize, AvatarWithFallback } from './examples/avatar';
-// import { BadgeSimpleExample, BadgeCustomExample, BadgeVariantsExample } from './examples/badge';
-// import { ButtonSimpleExample, ButtonCustomExample, ButtonSizeExample, ButtonIconExample, ButtonVariantsExample } from './examples/button';
-// import { SeparatorHorizontalExample, SeparatorVerticalExample, SeparatorCustomExample } from './examples/separator';
-// import {
-//   AccordionSimpleExample,
-//   AccordionCustomTriggerExample,
-//   AccordionMultipleSelectExample,
-//   AccordionDisableExample,
-//   AccordionControlCollapseExample,
-//   AccordionStartOpenExample,
-//   AccordionDisableItemExample
-// } from './examples/accordion';
-// import {
-//   AlertDialogSimpleExample,
-//   AlertDialogTitleExample,
-//   AlertDialogSubTitleExample,
-//   AlertDialogHiddenCancelExample,
-//   AlertDialogHiddenConfirmExample,
-//   AlertDialogCancelCallbackExample,
-//   AlertDialogConfirmCallbackExample,
-//   AlertDialogSkipPatterCallbackExample
-// } from './examples/alert-dialog';
-
-// import { CardSimpleExample } from './examples/card';
 
 import { Form, useGlobalFormContext, useFormState } from '@/components/ui/form';
 import { useCallback } from 'react';
@@ -41,9 +11,11 @@ export default function App() {
 
   return (
     <Form
-      validationMode="onBlur"
+      validationMode="onSubmit"
       onSubmit={handleSubmit}
-      defaultValues={{ name: 'rodrigo', sobrenome: 'Nantes' }}
+      defaultValues={{
+        option: 1,
+      }}
     >
       <FormContent />
     </Form>
@@ -79,44 +51,20 @@ function FormContent() {
     <div className="w-full mt-9 flex justify-center">
       <div className="w-96">
         <div className="gap-2 flex flex-col">
-          <Input
-            label="Nome do usuário"
-            name="name"
-            // placeholder="Ex: Rodrigo"
-            rules={{ required: 'Campo Obrigatório' }}
+
+          <Select
+            name="option"
+            placeholder="Estado"
+            label="Selecione um estado"
+            selectLabel="Selecione ao menos uma opção"
+            rules={{ required: 'Campo obrigatório' }}
+            options={[
+              { name: 'MS', value: 1 },
+              { name: 'SC', value: 2 },
+              { name: 'MG', value: 3 },
+            ]}
           />
 
-          <Input
-            label="Sobrenome"
-            name="sobrenome"
-            // placeholder="sobrenome"
-            rules={{ required: 'Campo Obrigatório' }}
-          />
-
-          <Input
-            label="Email"
-            name="email"
-            placeholder="fractal@gmail.ocom"
-            rules={{ required: 'Campo Obrigatório' }}
-          />
-
-          <Checkbox name="gender" />
-
-          <InputCalendar
-            name="date"
-            triggerSettings={{ placeholder: 'Data', label: 'Informe  a data' }}
-            calendarSettings={{
-              mode: 'multiple',
-              name: 'date',
-              rules: { required: 'Campo Obrigatório' },
-            }}
-          /> 
-
-          {/* <FormCalendar
-            name="date"
-            rules={{ required: 'A data é obrigatória.' }}
-            className="my-custom-class"
-          /> */}
         </div>
 
         <div className="flex gap-4 flex-wrap mt-4">

@@ -21,6 +21,7 @@ const InputModel = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
+
 InputModel.displayName = 'Input';
 
 const Input = React.forwardRef<
